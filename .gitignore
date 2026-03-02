@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Turbo
+.turbo/
+
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# CBA data (vector DB, project metadata, memory)
+.cba/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# ONNX model cache
+.cache/
+
+# Lance DB files that may appear in working dir
+*.lance/

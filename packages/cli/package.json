@@ -1,0 +1,28 @@
+{
+  "name": "@cba/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "cba": "dist/bin.js"
+  },
+  "main": "dist/program.js",
+  "types": "dist/program.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@cba/core": "workspace:*",
+    "@cba/mcp": "workspace:*",
+    "chalk": "^5.4.0",
+    "dotenv": "^16.4.0",
+    "commander": "^13.0.0",
+    "ora": "^8.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}
