@@ -138,7 +138,7 @@ export class CBA extends EventEmitter {
 
     this.embedder = new Embedder(this.config);
 
-    if (this.config.anthropicApiKey) {
+    if (this.config.xaiApiKey) {
       this.llmClient = new LLMClient(this.config);
     }
 

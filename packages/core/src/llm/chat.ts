@@ -1,5 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { LLMClient, type StreamEvent } from './client.js';
+import { LLMClient, type StreamEvent, type LLMMessage } from './client.js';
 import { SYSTEM_CHAT, buildChatPrompt } from './prompts.js';
 import { buildPromptContext } from '../retriever/context-builder.js';
 import type { SearchResult } from '../retriever/search.js';
@@ -52,8 +51,8 @@ export class ChatSession {
     userMessage: string,
     context: string,
     memory?: string
-  ): Anthropic.MessageParam[] {
-    const messages: Anthropic.MessageParam[] = [];
+  ): LLMMessage[] {
+    const messages: LLMMessage[] = [];
 
     // Include recent history (last 20 messages to stay within context)
     const recentHistory = this.history.slice(-20);

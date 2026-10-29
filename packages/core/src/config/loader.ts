@@ -20,8 +20,8 @@ export async function loadConfig(overrides?: Partial<CBAConfig>): Promise<CBACon
   }
 
   const envConfig: Record<string, unknown> = {};
-  if (process.env['ANTHROPIC_API_KEY']) {
-    envConfig.anthropicApiKey = process.env['ANTHROPIC_API_KEY'];
+  if (process.env['XAI_API_KEY']) {
+    envConfig.xaiApiKey = process.env['XAI_API_KEY'];
   }
 
   const merged = { ...fileConfig, ...envConfig, ...overrides, dataDir };
@@ -49,7 +49,7 @@ export async function saveConfig(config: Partial<CBAConfig>, dataDir?: string): 
 
   const merged = { ...existing, ...config };
   // Don't save env-derived keys to file
-  delete merged.anthropicApiKey;
+  delete merged.xaiApiKey;
 
 
   await writeFile(configPath, JSON.stringify(merged, null, 2) + '\n', 'utf-8');
