@@ -78,6 +78,7 @@ export class LLMClient {
         messages: withSystem(messages, options?.system),
         stream: true,
         stream_options: { include_usage: true },
+        reasoning_effort: 'low', // interactive chat: keep latency down
       });
 
       let inputTokens = 0;

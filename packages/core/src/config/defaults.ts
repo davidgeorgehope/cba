@@ -19,8 +19,8 @@ export const DEFAULT_CONFIG: CBAConfig = {
     minScore: 0.1,
   },
   llm: {
-    explainModel: 'grok-4.3',
-    chatModel: 'grok-4.3',
+    explainModel: 'grok-4.7',
+    chatModel: 'grok-4.7',
     complexModel: 'grok-4.7',
     maxTokens: 4096,
   },
