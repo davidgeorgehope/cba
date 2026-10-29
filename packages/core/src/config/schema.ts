@@ -19,9 +19,9 @@ export const CBAConfigSchema = z.object({
   }).default({}),
 
   llm: z.object({
-    explainModel: z.string().default('claude-sonnet-4-20250514'),
-    chatModel: z.string().default('claude-sonnet-4-20250514'),
-    complexModel: z.string().default('claude-opus-4-20250514'),
+    explainModel: z.string().default('claude-sonnet-5-5'),
+    chatModel: z.string().default('claude-sonnet-5-5'),
+    complexModel: z.string().default('claude-opus-5-5'),
     maxTokens: z.number().default(4096),
   }).default({}),
 

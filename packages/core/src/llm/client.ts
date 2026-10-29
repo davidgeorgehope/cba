@@ -45,7 +45,6 @@ export class LLMClient {
       const response = await this.client.messages.create({
         model,
         max_tokens: maxTokens,
-        temperature: options?.temperature ?? 0.3,
         system: options?.system,
         messages,
       });
@@ -77,7 +76,6 @@ export class LLMClient {
       const stream = this.client.messages.stream({
         model,
         max_tokens: maxTokens,
-        temperature: options?.temperature ?? 0.3,
         system: options?.system,
         messages,
       });
