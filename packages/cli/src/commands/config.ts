@@ -17,7 +17,7 @@ export function registerConfigCommand(program: Command): void {
         const cfg = await loadConfig();
         const display = {
           ...cfg,
-          anthropicApiKey: cfg.anthropicApiKey ? '***' + cfg.anthropicApiKey.slice(-4) : undefined,
+          xaiApiKey: cfg.xaiApiKey ? '***' + cfg.xaiApiKey.slice(-4) : undefined,
         };
 
         if (jsonOutput) {

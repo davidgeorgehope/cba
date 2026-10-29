@@ -17,7 +17,7 @@ cba mcp                              # Start MCP server for Claude Code / Cursor
 - **Semantic search**: Finds code by meaning, not just keywords. "auth flow" finds `validateToken()`, `SessionManager`, login middleware — even if they never contain the word "auth".
 - **AST-aware chunking**: Uses tree-sitter to split code into semantic units (functions, classes, interfaces) instead of dumb line windows.
 - **Local embeddings**: Runs `all-MiniLM-L6-v2` locally via ONNX — no embedding API key needed. Model downloads (~80MB) on first run and is cached.
-- **LLM explanations**: Claude explains *why* each result is relevant (optional, requires Anthropic API key).
+- **LLM explanations**: Grok explains *why* each result is relevant (optional, requires xAI API key).
 
 ## Architecture
 
@@ -56,11 +56,11 @@ Only one API key is needed — and only for LLM features (explain, ask, chat):
 
 ```bash
 # Create a .env file (auto-loaded by the CLI)
-echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+echo "XAI_API_KEY=xai-..." > .env
 
 # Or set globally
 mkdir -p ~/.cba
-echo "ANTHROPIC_API_KEY=sk-ant-..." > ~/.cba/.env
+echo "XAI_API_KEY=xai-..." > ~/.cba/.env
 ```
 
 Indexing and pure vector search work without any API key.
@@ -96,7 +96,7 @@ Supports incremental re-indexing — only processes changed files on subsequent 
 Semantic search with optional AI explanations.
 
 ```bash
-cba search 'authentication flow'         # Search + Claude explanations
+cba search 'authentication flow'         # Search + Grok explanations
 cba search 'database queries' --no-explain  # Fast retrieval only
 cba search 'error handling' --limit 5    # Limit results
 cba search 'api routes' --lang python    # Filter by language
@@ -158,7 +158,7 @@ cba mcp --project /path/to/repo # Specify project
 
 ```bash
 cba config show       # Show current config
-cba config set llm.chatModel claude-opus-4-20250514
+cba config set llm.chatModel grok-4.7
 cba config init       # Initialize ~/.cba directory
 ```
 
@@ -214,7 +214,7 @@ Connect cba to Claude Code, Cursor, or any MCP-compatible AI agent:
 | Embeddings | `all-MiniLM-L6-v2` via `@huggingface/transformers` (local, no API key) |
 | Vector DB | LanceDB (embedded, no server) |
 | Parsing | tree-sitter (TS, JS, Python, Go, Rust, Java) |
-| LLM | Claude via `@anthropic-ai/sdk` |
+| LLM | xAI Grok via `openai` SDK (api.x.ai) |
 | CLI | Commander.js, chalk, ora |
 | MCP | `@modelcontextprotocol/sdk` |
 | Build | pnpm workspaces, turbo, TypeScript |
@@ -233,7 +233,7 @@ Sliding-window fallback (still indexed and searchable): all other text file type
 4. **Embed** — Generate 384-dim vectors locally with `all-MiniLM-L6-v2`
 5. **Store** — Upsert into LanceDB at `~/.cba/data/{projectHash}/`
 6. **Search** — Embed query, vector similarity search, normalize scores, apply filters
-7. **Explain** — Send top chunks to Claude in a single batch call, get per-result explanations
+7. **Explain** — Send top chunks to Grok in a single batch call, get per-result explanations
 
 ## License
 

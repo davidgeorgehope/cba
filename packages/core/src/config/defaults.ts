@@ -19,9 +19,9 @@ export const DEFAULT_CONFIG: CBAConfig = {
     minScore: 0.1,
   },
   llm: {
-    explainModel: 'claude-sonnet-5-5',
-    chatModel: 'claude-sonnet-5-5',
-    complexModel: 'claude-opus-5-5',
+    explainModel: 'grok-4.3',
+    chatModel: 'grok-4.3',
+    complexModel: 'grok-4.7',
     maxTokens: 4096,
   },
   embedding: {

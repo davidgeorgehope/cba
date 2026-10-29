@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const CBAConfigSchema = z.object({
-  anthropicApiKey: z.string().optional(),
+  xaiApiKey: z.string().optional(),
   dataDir: z.string().optional(),
 
   indexing: z.object({
@@ -19,9 +19,9 @@ export const CBAConfigSchema = z.object({
   }).default({}),
 
   llm: z.object({
-    explainModel: z.string().default('claude-sonnet-5-5'),
-    chatModel: z.string().default('claude-sonnet-5-5'),
-    complexModel: z.string().default('claude-opus-5-5'),
+    explainModel: z.string().default('grok-4.3'),
+    chatModel: z.string().default('grok-4.3'),
+    complexModel: z.string().default('grok-4.7'),
     maxTokens: z.number().default(4096),
   }).default({}),
 
