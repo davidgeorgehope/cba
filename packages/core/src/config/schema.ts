@@ -19,8 +19,8 @@ export const CBAConfigSchema = z.object({
   }).default({}),
 
   llm: z.object({
-    explainModel: z.string().default('grok-4.3'),
-    chatModel: z.string().default('grok-4.3'),
+    explainModel: z.string().default('grok-4.7'),
+    chatModel: z.string().default('grok-4.7'),
     complexModel: z.string().default('grok-4.7'),
     maxTokens: z.number().default(4096),
   }).default({}),
